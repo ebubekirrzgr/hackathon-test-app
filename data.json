@@ -1,0 +1,22 @@
+{
+  "TON Coin": [
+    {
+      "question": "Fiyat nedir?",
+      "answer": "X USD"
+    },
+    {
+      "question": "TON nedir?",
+      "answer": "TON, Telegram tarafından geliştirilen bir blockchain projesidir."
+    }
+  ],
+  "Akıllı Kontratlar": [
+    {
+      "question": "Nasıl oluşturulur?",
+      "answer": "Akıllı kontratlar, Solidity dilinde yazılabilir."
+    },
+    {
+      "question": "Güvenlik nasıl sağlanır?",
+      "answer": "Güvenlik denetimleri yapılmalı ve açıklar önceden tespit edilmelidir."
+    }
+  ]
+}
