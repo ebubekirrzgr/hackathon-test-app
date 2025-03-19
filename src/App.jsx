@@ -1,69 +1,41 @@
-import React, { useState } from 'react';
-import data from '../data.json';
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
 
 import WebApp from '@twa-dev/sdk';
 
-const BotApp = () => {
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [selectedQuestion, setSelectedQuestion] = useState(null);
-
-  const handleCategorySelect = (category) => {
-    setSelectedCategory(category);
-    setSelectedQuestion(null); // Yeni kategori seçildiğinde soruyu sıfırla
-  };
-
-  const handleQuestionSelect = (question) => {
-    setSelectedQuestion(question);
-  };
+function App() {
+  const [count, setCount] = useState(0);
 
   return (
-    <div>
-      <button onClick={() => WebApp.showAlert(`Hello World!`)}>
-        Show Alert
-      </button>
-      <h1>TON Bot</h1>
-      {!selectedCategory && (
-        <div>
-          <h2>Kategori Seçin:</h2>
-          {Object.keys(data).map((category) => (
-            <button
-              key={category}
-              onClick={() => handleCategorySelect(category)}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-      )}
-
-      {selectedCategory && !selectedQuestion && (
-        <div>
-          <h2>{selectedCategory} Soruları:</h2>
-          {data[selectedCategory].map((question, index) => (
-            <button
-              key={index}
-              onClick={() => handleQuestionSelect(question.question)}
-            >
-              {question.question}
-            </button>
-          ))}
-        </div>
-      )}
-
-      {selectedQuestion && (
-        <div>
-          <h2>Cevap:</h2>
-          <p>
-            {
-              data[selectedCategory].find(
-                (q) => q.question === selectedQuestion
-              )?.answer
-            }
-          </p>
-        </div>
-      )}
-    </div>
+    <>
+      <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+      </div>
+      {/* Here we add our button with alert callback */}
+      <div className="card">
+        <button
+          onClick={() =>
+            WebApp.showAlert(`Hello World! Current count is ${count}`)
+          }
+        >
+          Show Alert
+        </button>
+      </div>
+    </>
   );
-};
+}
 
-export default BotApp;
+export default App;
